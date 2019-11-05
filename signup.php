@@ -1,30 +1,7 @@
 <?php
 include_once './resource/database.php';
 
-if ( isset( $_POST['email'] ) ) {
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $hashedPassword = password_hash( $password, PASSWORD_DEFAULT );
 
-    try {
-        $sqlInsert = "INSERT INTO users ( email, username, password, join_date) values
-                (:email, :username, :password, now()) ";
-
-        $statement = $db->prepare( $sqlInsert );
-
-        $statement->execute( array( ':username'=>$username, ':email'=>$email, ':password'=>$hashedPassword ) );
-
-        if ( $statement->rowCount() == 1 ) {
-            $result = "<p style='padding: 20px color: green;'>Record updated Successfully</p>";
-        }
-
-    } catch( PDOExeception $ex ) {
-
-        $result = "<p style='padding: 20px color: red;'>Record updation failed". $ex->getMessage().'</p>';
-
-    }
-}
 
 ?>
 
