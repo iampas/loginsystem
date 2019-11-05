@@ -4,21 +4,10 @@ $username = 'root';
 $password = 'cinfotech';
 
 try {
-    $db = new PDO ($dsn, $username, $password);
+    $db = new PDO($dsn, $username, $password);
 
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (\Throwable $th) {
-    //throw $th;
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Database Connection successful";
+} catch (PDOException $ex) {
+    echo "Database connection is unsuccessful " . $ex->getMessage();
 }
-
-
-
-
-
-
-    
-   
-
-?>
-
-
